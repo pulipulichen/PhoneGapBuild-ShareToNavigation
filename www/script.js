@@ -4,7 +4,7 @@ ready = function () {
 
         window.plugins.intent.getCordovaIntent(function (intent) {
             try {
-                intent_handler(intent);
+                test_handler(intent);
             } catch (e) {
                 alert(e);
                 navigator.app.exitApp();
@@ -71,6 +71,9 @@ intent_handler = function (intent) {
                 var _lat = getQueryVariable("lat", _search);
                 var _lon = getQueryVariable("lon", _search);
                 _search = _lat + "," + _lon;
+        }
+        else {
+            _search = decodeURIComponent(_search);
         }
 
         _navigation_url = "https://www.google.com/maps/dir/?api=1&destination=" + _search;
