@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!-- 
+PhoneGap Build Configuration
+-->
+<!-- Configuration Start: Please customize following configuration -->
+<widget xmlns="http://www.w3.org/ns/widgets" 
+        xmlns:gap="http://phonegap.com/ns/1.0" 
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="pgb-share-to-navigation.pulipuli.info" version="1.0.0">
+    
+    <name>Share To Navigation</name>
+    <description>
+        An Android APP for start navigation with map APP via sharing.
+    </description>
+    <author href="http://blog.pulipuli.info" email="pulipuli.chen@gmail.com">布丁布丁吃布丁</author>
+    <!-- Configuration End -->
+  
+    <!--  allows access to any external resource. -->
+    <access origin="*"/>
+    <allow-navigation href="*" />
+  
+    <content src="index.html"/>
+    <icon src="www/img/icon.png"/>
+  
+    <!-- https://build.phonegap.com/current-support -->
+    <preference name="phonegap-version" value="cli-8.0.0" />
+    
+    <!-- 防止太多權限 -->
+    <preference name="permissions" value="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    
+    <!-- 只保留最低的權限 -->
+    <feature name="http://api.phonegap.com/1.0/network" />
+    
+    <!-- 外掛 -->
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />
+    <plugin name="cordova-plugin-network-information" spec="~1.3.3" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.3.2" />
+    
+    <!-- https://github.com/cordova-misc/cordova-webintent -->
+    <plugin spec="https://github.com/cordova-misc/cordova-webintent.git" source="git" />
+    
+    <!-- https://github.com/napolitano/cordova-plugin-intent -->
+    <plugin spec="https://github.com/napolitano/cordova-plugin-intent.git" source="git" />
+    
+    <!-- https://github.com/katzer/cordova-plugin-background-mode -->
+    <plugin spec="https://github.com/katzer/cordova-plugin-background-mode.git" source="git" />
+    
+    <platform name="android">
+        <config-file target="AndroidManifest.xml" parent="/manifest/application/activity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"></action>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"></category>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+        </config-file>
+    </platform>
+</widget>
