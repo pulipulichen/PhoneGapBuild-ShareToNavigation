@@ -1,7 +1,5 @@
 ready = function () {
     try {
-        test_handler();
-        /*
         window.plugins.intent.setNewIntentHandler(function (intent) {}, function (e) {});
 
         window.plugins.intent.getCordovaIntent(function (intent) {
@@ -12,8 +10,6 @@ ready = function () {
                 navigator.app.exitApp();
             }
         });
-        */
-
     } catch (e) {
         alert("ready fail: " + e);
     }
@@ -61,24 +57,26 @@ intent_handler = function (intent) {
         }
     }
     
-    var _config = {
-        action: "android.intent.action.EDIT",
-        type: "vnd.android.cursor.item/event",
-    };
-    
+    //alert(_search);
+    var _navigation_url = "https://www.google.com/maps?api=1";
     if (typeof(_calendar_extras.title) === "string") {
-        _config.extras = _calendar_extras;
-    }
+        var _search = _calendar_extras.title;
 
-    window.plugins.webintent.startActivity(_config,
-            function () {
-                navigator.app.exitApp();
-            },
-            function () {
-                alert('Failed:' + JSON.stringify(_calendar_extras, null, 2));
-                navigator.app.exitApp();
-            }
-    );
+        if (_search !== undefined 
+                    && _search.indexOf("pgfu") > -1 
+                    && _search.indexOf("n.tw") > -1) {
+                //alert(decodeURIComponent(_search));
+                _search = "?" + decodeURIComponent(_search).split("?")[1];
+
+                var _lat = getQueryVariable("lat", _search);
+                var _lon = getQueryVariable("lon", _search);
+                _search = _lat + "," + _lon;
+        }
+
+        _navigation_url = "https://www.google.com/maps/dir/?api=1&destination=" + _search;
+    }
+    window.open(_navigation_url, "_system");
+    navigator.app.exitApp();
 };
 
 intent_handler_timer = undefined;
