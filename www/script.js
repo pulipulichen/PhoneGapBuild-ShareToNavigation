@@ -4,7 +4,7 @@ ready = function () {
 
         window.plugins.intent.getCordovaIntent(function (intent) {
             try {
-                intent_handler(intent);
+                test_handler(intent);
             } catch (e) {
                 alert(e);
                 navigator.app.exitApp();
