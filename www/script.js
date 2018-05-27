@@ -4,7 +4,7 @@ ready = function () {
 
         window.plugins.intent.getCordovaIntent(function (intent) {
             try {
-                test_handler(intent);
+                intent_handler(intent);
             } catch (e) {
                 alert(e);
                 navigator.app.exitApp();
@@ -16,7 +16,6 @@ ready = function () {
 };
 
 intent_handler = function (intent) {
-
     if (intent_handler_timer !== undefined) {
         clearTimeout(intent_handler_timer);
     }
@@ -73,10 +72,11 @@ intent_handler = function (intent) {
                 _search = _lat + "," + _lon;
         }
         else {
-            _search = decodeURIComponent(_search);
+            _search = encodeURIComponent(_search);
         }
 
         _navigation_url = "https://www.google.com/maps/dir/?api=1&destination=" + _search;
+        //alert(_navigation_url);
     }
     window.open(_navigation_url, "_system");
     navigator.app.exitApp();
