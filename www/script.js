@@ -1,5 +1,7 @@
 ready = function () {
     try {
+        test_handler();
+        /*
         window.plugins.intent.setNewIntentHandler(function (intent) {}, function (e) {});
 
         window.plugins.intent.getCordovaIntent(function (intent) {
@@ -10,6 +12,7 @@ ready = function () {
                 navigator.app.exitApp();
             }
         });
+        */
 
     } catch (e) {
         alert("ready fail: " + e);
