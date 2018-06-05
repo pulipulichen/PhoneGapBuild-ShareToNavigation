@@ -42,7 +42,18 @@ PhoneGap Build Configuration
     <!-- https://github.com/napolitano/cordova-plugin-intent -->
     <plugin spec="https://github.com/napolitano/cordova-plugin-intent.git" source="git" />
     
+    <preference name="BackgroundColor" value="0x00000000"/>
     <platform name="android">
+        <edit-config file="AndroidManifest.xml"
+                     target="/manifest/application"
+                     mode="merge">
+            <application android:theme="@android:style/Theme.Translucent"></application>
+        </edit-config>
+        <edit-config file="AndroidManifest.xml"
+                     target="/manifest/application/activity"
+                     mode="merge">
+            <activity android:theme="@android:style/Theme.Translucent"></activity>
+        </edit-config>
         <config-file target="AndroidManifest.xml" parent="/manifest/application/activity">
             <intent-filter android:label="🗺️ Navigate">
                 <action android:name="android.intent.action.VIEW" />
