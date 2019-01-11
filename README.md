@@ -11,3 +11,6 @@ An Android APP for start navigation with map APP via sharing.
 # Reference
 - Icon: http://www.iconninja.com/map-map-marker-icon-345729
 http://www.iconninja.com/share-icon-160558
+
+- Privacy Policy Generator: https://app-privacy-policy-generator.firebaseapp.com/
+- Privacy Policy: https://github.com/pulipulichen/PhoneGapBuild-ShareToNavigation/privacy_policy.md
